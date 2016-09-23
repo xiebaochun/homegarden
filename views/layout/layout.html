@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1"/>
+	<title>家园</title>
+	<meta name="keywords" content="家园">
+	<meta name="description" content="">
+	<meta name="referrer" content="always">
+	<!-- style -->
+	  <%- Loader('/public/css/base.css')
+	  .css('/public/css/base.css')
+	  .css('/public/css/common.css')
+	  .done()
+	  %>
+	  <!-- scripts -->
+	  <%- Loader('/public/index.min.js')
+	  .js('/public/js/libs/jquery.min.js')
+	  .done()
+	  %>
+
+</head>
+<body>
+	<div class='main'>
+	  <%- body %>
+	</div>
+</body>
+</html>
