@@ -1,0 +1,64 @@
+<style type="text/css">
+	.field{padding: 0 10px;}
+	.choose{
+		margin-top: 10px;
+		line-height: 50px;
+		text-align: center;
+		background-color: #fff;
+	}
+</style>
+<div class="game-wrap">
+	<div class="field"><label>当前财富：</label><label id="current-money"><%= user.money %></label></div>
+	<div class="field">
+		<label>买入：</label><input type="" name="" id="money" value="100" placehodler="请输入金额">
+	</div>
+	<div class="choose" id="big">大</div>
+	<div class="choose" id="small">小</div>
+</div>
+<script type="text/javascript">
+	$(function(){
+		var $game_wrap = $('.game-wrap');
+
+		$game_wrap.on('click', '#big', function() {
+			submit(1);
+		});
+		$game_wrap.on('click', '#small', function() {
+			submit(2);
+		});
+		function submit(action) {
+			var money = parseInt($('#money').val());
+			if(money > 1000 || money > parseInt($('#current-money').text())){
+				alert('超额');
+				return false;
+			}
+			$.ajax({
+				url:'/api/guess',
+				type:'post',
+				dataType:'json',
+				data: {action:action, money: money},
+				success: function(ret) {
+					dealResult(ret);
+				},
+				error: function(err){
+					console.log(err);
+				}
+			});
+		}
+		function dealResult(ret) {
+			console.log(ret);
+			if(ret){
+				if(ret.status = 1){
+					if(ret.data.isGuess){
+						alert('恭喜！+'+ret.data.result.getMoney);
+					}else{
+						alert('失败！'+ret.data.result.getMoney);
+					}
+				}else{
+					alert(ret.msg);
+				}
+				$('#current-money').text(ret.data.result.user.money);
+			}
+
+		}
+	});
+</script>

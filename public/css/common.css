@@ -1,1 +1,49 @@
 html{background-color: #eee;}
+input{line-height: 30px;}
+
+
+.field{
+	line-height: 40px;
+	border-bottom: 1px solid #ccc;
+	background-color: #fff;
+}
+.field a{
+	display: block;
+	padding: 0 10px;
+}
+
+/*按钮样式1*/
+.btn-1{
+	display: block;
+	line-height: 40px;
+	text-align:center;
+	border-radius: 5px;
+}
+
+/*底部导航*/
+.bottom-nav{
+	display: flex;
+	position: fixed;
+	width: 100%;
+	background-color: #fff;
+	border-top: 1px solid #999;
+	bottom: 0;
+}
+.bottom-nav > a{
+	flex: 1;
+	height:40px;
+	line-height: 40px;
+	text-align: center;
+}
+.bottom-nav > a{
+	display: block;
+	border-right: 1px solid #999;
+}
+.bottom-nav > a:last-child{
+	border-right: none;
+}
+
+.bottom-nav > .active{
+	background-color: #999;
+	color:#fff;
+}

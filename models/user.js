@@ -5,6 +5,11 @@ var _ = require('lodash');
 var UserSchema = new Schema({
   id:{type:Number},
   name: { type: String},
+  level:{type:Number, default: 0},
+  money:{type:Number, default: 0},
+  rank:{type:Number, default:10000},
+  experience:{type:Number, default:0},
+  password:String,
   // loginname: { type: String},
   // pass: { type: String },
   // email: { type: String},
